@@ -1,0 +1,55 @@
+.window {
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(180deg, #241537 0%, rgba(0, 0, 0, 0.97) 72.81%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.window nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    font-weight: 500;
+}
+.window nav ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    gap: 60px;
+}
+.window nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+.profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    justify-self: end;
+    padding-right: 40px;
+    font-weight: 300;
+}
+.profile a {
+    color: #fff;
+    text-decoration: none;
+}
+.profile a:hover {
+    color: #c2c2c2;
+}
+.profile a span {
+    border: 2px solid #fff;
+    padding: 6px;
+    border-radius: 10px;
+}
+.logo {
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 5%;
+}
