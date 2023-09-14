@@ -76,7 +76,8 @@ const Register: React.FC = () => {
     }
 
     return (
-        <section className={style.regWin}>
+        <section className={style.aura}>
+            <section className={style.regWin}>
             <form>
                 <h1>Регистрация</h1>
                 <div>
@@ -99,6 +100,8 @@ const Register: React.FC = () => {
             </form>
             <p>У вас уже есть аккаунт?<Link to='/войти'>Войти</Link></p>
         </section>
+        </section>
+        
     )
 }
 
