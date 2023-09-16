@@ -10,7 +10,7 @@ const Login: React.FC = () => {
     const [password, setPassword] = useState('');
     const [emailDirty, setEmailDirty] = useState<boolean>(false);
     const [passwordDirty, setPasswordDirty] = useState<boolean>(false);
-    const [emailError, setEmailError] = useState<string>('Email не может быть пустым!');
+    const [emailError, setEmailError] = useState<string>('email не может быть пустым!');
     const [passwordError, setPasswordError] = useState<string>('Пароль не может быть пустым!');
     const [formValid, setFormValid] = useState<boolean>(false);
 

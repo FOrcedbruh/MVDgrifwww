@@ -6,6 +6,11 @@ import Login from "./Pages/Login";
 import { TestCategories }from "./Pages/TestCategoties";
 import Quiz from "./Quiz";
 import Home from "./Pages/Home";
+import { useState, useEffect } from "react";
+import TopButton from "./TopButton";
+
+
+
 
 const Main: React.FC = () => {
     return (
@@ -20,9 +25,28 @@ const Main: React.FC = () => {
     )
 }
 
+
+
 const App: React.FC = () => {
+
+    const [percent, setPercent] = useState<number>(0);
+
+    const progress: any = () => {
+        const windowScroll: number = window.scrollY;
+        const height: number = 2398;
+        setPercent(percent + (windowScroll / height) * 100);
+        console.log(windowScroll);
+    }
+
+    useEffect(() => {
+        window.addEventListener('scroll', progress);
+
+        return () => {window.removeEventListener('scroll', progress)};
+    }, []);
+
     return (
         <section className="wrapper">
+            <div className="progressBar" style={{width: `${percent}%`}}></div>
             <Layout />
             <main className="container">
                 <Main />
@@ -34,6 +58,7 @@ const App: React.FC = () => {
                     <Route path='/Тесты' element={<TestCategories />}/>
                     <Route path="Тесты/:title" element={<Quiz />}/>
                 </Routes>
+                <TopButton />
             </main>
         </section>
     )

@@ -75,3 +75,31 @@ body {
     font-weight: 800;
     line-height: normal;
 }
+.progressBar {
+    position: fixed;
+    height: 3px;
+    background-color: blueviolet;
+    z-index: 2;
+    align-self: start;
+}
+.topBtn {
+    background-color: #331C41;
+    position: fixed;
+    width: 20%;
+    height: 30px;
+    margin-top: 45.5%;
+    border-top-right-radius: 14px;
+    border-top-left-radius: 14px;
+    border: none;
+    outline: none;
+    color: #FFF;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+}
+.activeTopBtn {
+    transform: translateY(-30px);
+}
+.topBtn:hover {
+    box-shadow: 1px 1px 20px #c76eff;
+}
