@@ -58,6 +58,8 @@ body {
     z-index: 1;
     align-self: start;
     margin-right: 55%;
+    opacity: 0;
+    transition: all 2s ease;
 }
 .welcome p {
     color: #331C41;
@@ -102,4 +104,7 @@ body {
 }
 .topBtn:hover {
     box-shadow: 1px 1px 20px #c76eff;
+}
+.welcome.view {
+    opacity: 1;
 }

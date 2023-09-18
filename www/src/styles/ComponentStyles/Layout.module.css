@@ -13,7 +13,7 @@
     width: 50%;
     font-weight: 500;
 }
-.window nav ul {
+.window nav ul.main {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -52,4 +52,14 @@
     align-items: center;
     justify-content: space-between;
     margin-left: 5%;
+}
+.innerUl  {
+    list-style: none;
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    gap: 13px;
+    padding-top: 40px;
+    z-index: 3;
+    color: #fff
 }

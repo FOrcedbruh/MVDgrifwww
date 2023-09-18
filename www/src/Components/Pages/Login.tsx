@@ -62,12 +62,12 @@ const Login: React.FC = () => {
             <section className={style.regWin}>
             <form>
                 <h1>Войти</h1>
-                <div>
+                <div className={style.logDiv}>
                     <label htmlFor="email">Email</label>
                     <input onChange={e => emailHandler(e)} onBlur={e => blurHandler(e)} type="email" name="email" placeholder="Ваша почта..."/>
                     {(emailDirty && emailError) && <section className={style.error}>{emailError}</section>}
                 </div>
-                <div>
+                <div className={style.logDiv}>
                     <label htmlFor="password">Пароль</label>
                     <input onChange={e => passworHandler(e)} onBlur={e => blurHandler(e)} type={`${eye ? "password" : "text"}`} name="password" placeholder="Ваш пароль..."/>
                     <div onClick={() => {setEye(!eye)}} className={style.eye}>{eye ? <VisibilityOutlinedIcon color='secondary'/> : <VisibilityOffOutlinedIcon color='secondary'/>}</div>

@@ -9,7 +9,6 @@ const TopButton: React.FC = () => {
     const scrollHandler: any = () => {
         const scrollY = window.scrollY;
         setSCroll(scroll = scrollY);
-        console.log(scroll)
         if (scroll > 1000) {
             setActive(true);
         }

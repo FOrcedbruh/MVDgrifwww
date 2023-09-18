@@ -7,6 +7,7 @@
     z-index: 2;
     background-color: transparent;
     backdrop-filter: blur(20px);
+    z-index: 3;
 }
 .regWin {
     display: flex;
@@ -17,7 +18,9 @@
     backdrop-filter: blur(30px);
     border: 2px solid #5f5f5f;
     gap: 10%;
-    width: 40%;
+    min-width: 60%;
+    min-height: 93%;
+    height: 60%;
     border-radius: 40px;
     color: #fff;
     padding: 4%;
@@ -31,7 +34,7 @@ form {
     flex-direction: column;
     gap: 40px;
 }
-.regWin div {
+.regWin div.regDiv {
     display: flex;
     flex-direction: column;
     align-items: start;
@@ -40,7 +43,7 @@ form {
     width: 60%;
 }
 .regWin div input {
-    width: 100%;
+    width: 70%;
     height: 40px;
     border: none;
     outline: none;
@@ -57,7 +60,7 @@ form {
 }
 .error {
     height: 25px;
-    width: 120%;
+    width: 70%;
     border-radius: 20px;
     background-color: #ff8a8a;
     color: red;
@@ -82,10 +85,18 @@ form {
     box-shadow: 2px 2px 20px #9706f7;
 }
 .eye {
-    transform: translateX(420px) translateY(-42px);
+    transform: translateX(540px) translateY(-42px);
 }
 a {
     text-decoration: none;
     color: #9706f7;
     font-weight: 600;
+}
+.regWin div.logDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    gap: 10px;
+    width: 60%;
 }

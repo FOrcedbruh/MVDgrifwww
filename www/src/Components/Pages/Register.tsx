@@ -80,22 +80,31 @@ const Register: React.FC = () => {
             <section className={style.regWin}>
             <form>
                 <h1>Регистрация</h1>
-                <div>
+                <div className={style.regDiv}>
                     <label htmlFor="name">Ваше ФИО</label>
                     <input type="text" placeholder='Иванов Иван Иванович...' name='name' onChange={e => {nameHandler(e)}} onBlur={e => {blurHandler(e)}}/>
                     {(nameDirty && nameError) && <section className={style.error}>{nameError}</section>}
                 </div>
-                <div>
+                <div className={style.regDiv}>
                     <label htmlFor="email">Email</label>
                     <input onChange={e => emailHandler(e)} onBlur={e => blurHandler(e)} type="email" name="email" placeholder="Ваша почта..."/>
                     {(emailDirty && emailError) && <section className={style.error}>{emailError}</section>}
                 </div>
-                <div>
+                <div className={style.regDiv}>
+                    <label htmlFor="region">Ваш Регион</label>
+                    <input type="text" name='region' placeholder='Ваш Регион...'/>
+                </div>
+                <div className={style.regDiv}>
+                    <label htmlFor="city">Ваш Город</label>
+                    <input type="text" name='city' placeholder='Ваш Город...'/>
+                </div>
+                <div className={style.regDiv}>
                     <label htmlFor="password">Пароль</label>
                     <input onChange={e => passworHandler(e)} onBlur={e => blurHandler(e)} type={`${eye ? "password" : "text"}`} name="password" placeholder="Ваш пароль..."/>
                     <div onClick={() => {setEye(!eye)}} className={style.eye}>{eye ? <VisibilityOutlinedIcon color='secondary'/> : <VisibilityOffOutlinedIcon color='secondary'/>}</div>
                     {(passwordDirty && passwordError) && <section className={style.error}>{passwordError}</section>}
                 </div>
+                
                 <button type='submit' className={style.regBtn} disabled={!formValid}>Зарегистрироваться</button>
             </form>
             <p>У вас уже есть аккаунт?<Link to='/войти'>Войти</Link></p>
