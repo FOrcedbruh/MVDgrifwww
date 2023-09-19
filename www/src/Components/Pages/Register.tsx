@@ -3,6 +3,8 @@ import { useState } from 'react';
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
 import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined';
 import { Link } from 'react-router-dom';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
 
 const Register: React.FC = () => {
 
@@ -75,36 +77,87 @@ const Register: React.FC = () => {
         }
     }
 
+
+    let [clas, setClas] = useState<string>('');
+
+
+    const handleClass = (e: SelectChangeEvent) => {
+        setClas(e.target.value as string)
+    }
+
+    let [gender, setGender] = useState<string>('');
+
+    const handleGender = (e: SelectChangeEvent) => {
+        setGender(e.target.value as string);
+    }
+
     return (
         <section className={style.aura}>
             <section className={style.regWin}>
             <form>
-                <h1>Регистрация</h1>
-                <div className={style.regDiv}>
-                    <label htmlFor="name">Ваше ФИО</label>
-                    <input type="text" placeholder='Иванов Иван Иванович...' name='name' onChange={e => {nameHandler(e)}} onBlur={e => {blurHandler(e)}}/>
-                    {(nameDirty && nameError) && <section className={style.error}>{nameError}</section>}
-                </div>
-                <div className={style.regDiv}>
-                    <label htmlFor="email">Email</label>
-                    <input onChange={e => emailHandler(e)} onBlur={e => blurHandler(e)} type="email" name="email" placeholder="Ваша почта..."/>
-                    {(emailDirty && emailError) && <section className={style.error}>{emailError}</section>}
-                </div>
-                <div className={style.regDiv}>
-                    <label htmlFor="region">Ваш Регион</label>
-                    <input type="text" name='region' placeholder='Ваш Регион...'/>
-                </div>
-                <div className={style.regDiv}>
-                    <label htmlFor="city">Ваш Город</label>
-                    <input type="text" name='city' placeholder='Ваш Город...'/>
-                </div>
-                <div className={style.regDiv}>
-                    <label htmlFor="password">Пароль</label>
-                    <input onChange={e => passworHandler(e)} onBlur={e => blurHandler(e)} type={`${eye ? "password" : "text"}`} name="password" placeholder="Ваш пароль..."/>
-                    <div onClick={() => {setEye(!eye)}} className={style.eye}>{eye ? <VisibilityOutlinedIcon color='secondary'/> : <VisibilityOffOutlinedIcon color='secondary'/>}</div>
-                    {(passwordDirty && passwordError) && <section className={style.error}>{passwordError}</section>}
-                </div>
-                
+            <h1>Регистрация</h1>
+            <section className={style.inputWindows}>
+                    <section className={style.inputs}>
+                        <div className={style.regDiv}>
+                            <label htmlFor="name">Ваше ФИО</label>
+                            <input type="text" placeholder='Иванов Иван Иванович...' name='name' onChange={e => {nameHandler(e)}} onBlur={e => {blurHandler(e)}}/>
+                            {(nameDirty && nameError) && <section className={style.error}>{nameError}</section>}
+                        </div>
+                        <div className={style.regDiv}>
+                            <label htmlFor="email">Email</label>
+                            <input onChange={e => emailHandler(e)} onBlur={e => blurHandler(e)} type="email" name="email" placeholder="Ваша почта..."/>
+                            {(emailDirty && emailError) && <section className={style.error}>{emailError}</section>}
+                        </div>
+                        <div className={style.regDiv}>
+                            <label htmlFor="region">Ваш Регион</label>
+                            <input type="text" name='region' placeholder='Ваш Регион...'/>
+                        </div>
+                        <div className={style.regDiv}>
+                            <label htmlFor="city">Ваш Город</label>
+                            <input type="text" name='city' placeholder='Ваш Город...'/>
+                        </div>
+                        <div className={style.regDiv}>
+                            <label htmlFor="gender">Ваш пол</label>
+                            <Select label="Ваш пол" color='secondary' value={gender} onChange={handleGender} style={{width: 100}} labelId="demo-simple-select-standard-label" id="demo-simple-select-standard">
+                                <MenuItem value={"Мужской"}>Мужской</MenuItem>
+                                <MenuItem value={"Женский"}>Женский</MenuItem>
+                            </Select>
+                        </div>
+                    </section>
+                    <section className={style.inputs}>
+                        <div className={style.regDiv}>
+                            <label htmlFor="class">Ваш класс</label>
+                            <Select label="Ваш класс" color='secondary' value={clas} onChange={handleClass} style={{width: 100}} labelId="demo-simple-select-standard-label" id="demo-simple-select-standard">
+                                <MenuItem value={1}>1</MenuItem>
+                                <MenuItem value={2}>2</MenuItem>
+                                <MenuItem value={3}>3</MenuItem>
+                                <MenuItem value={4}>4</MenuItem>
+                                <MenuItem value={5}>5</MenuItem>
+                                <MenuItem value={6}>6</MenuItem>
+                                <MenuItem value={7}>7</MenuItem>
+                                <MenuItem value={8}>8</MenuItem>
+                                <MenuItem value={9}>9</MenuItem>
+                                <MenuItem value={10}>10</MenuItem>
+                                <MenuItem value={11}>11</MenuItem>
+
+                            </Select>
+                        </div>
+                        <div className={style.regDiv}>
+                            <label htmlFor="school">Ваша школа(полное название)</label>
+                            <input type="text" name='school' placeholder='Ваша школа...'/>
+                        </div>
+                        <div className={style.regDiv}>
+                            <label htmlFor="password">Придумайте пароль</label>
+                            <input onChange={e => passworHandler(e)} onBlur={e => blurHandler(e)} type={`${eye ? "password" : "text"}`} name="password" placeholder="Ваш пароль..."/>
+                            <div onClick={() => {setEye(!eye)}} className={style.eye}>{eye ? <VisibilityOutlinedIcon color='secondary'/> : <VisibilityOffOutlinedIcon color='secondary'/>}</div>
+                            {(passwordDirty && passwordError) && <section className={style.error}>{passwordError}</section>}
+                        </div>
+                        <div className={style.regDiv}>
+                            <label htmlFor="date">Дата рождения</label>
+                            <input type="date" placeholder='Дата рождения'/>
+                        </div>
+                    </section>
+            </section>
                 <button type='submit' className={style.regBtn} disabled={!formValid}>Зарегистрироваться</button>
             </form>
             <p>У вас уже есть аккаунт?<Link to='/войти'>Войти</Link></p>

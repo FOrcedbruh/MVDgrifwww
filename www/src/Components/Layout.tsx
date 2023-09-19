@@ -4,7 +4,7 @@ import gerb from './../images/logo-gerb.svg';
 import grif from './../images/logo-grif.svg';
 import line from './../images/logo-line.svg';
 import { useState, MouseEvent } from 'react';
-
+import ThemeThumb from './ThemeThumb';
 
 
 const Home: React.FC = () => {
@@ -61,7 +61,7 @@ const Layout: React.FC = () => {
 
     
     return (
-        <header className={style.window}>
+        <header className={`${style.window} header`}>
             <div className={style.logo}>
                 <img src={gerb}/>
                 <img src={line}/>
@@ -85,6 +85,7 @@ const Layout: React.FC = () => {
                     </li>
                 </ul>
             </nav>
+            <ThemeThumb />
             <div className={style.profile}>
                 <Link to='войти'>Войти</Link>
                 <Link to='регистрация'><span>Регистрация</span></Link>

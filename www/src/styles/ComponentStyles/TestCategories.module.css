@@ -4,13 +4,11 @@
     display: flex;
     justify-content: space-between;
     align-items: start;
-    background-color: black;
     z-index: 2;
     padding: 0 90px;
 }
 .grif {
     width: 50%;
-
 }
 .grif img {
     width: 800px;

@@ -59,7 +59,7 @@ const Quiz: React.FC = () => {
 
     const percentage = Math.round(step / Web.length * 100);
     return (
-        <section className={style.quizWin}>
+        <section className={`${style.quizWin} quizWindow`}>
             <div className={style.quiz}>
                 <div className={style.progress} style={{width: `${percentage}%`}}></div>
                 <h1>{question.title}</h1>

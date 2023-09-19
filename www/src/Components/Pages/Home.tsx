@@ -37,7 +37,7 @@ const Info: React.FC = () => {
 
 const Home: React.FC = () => {
     return (
-        <section className={style.window}>
+        <section className={`${style.window} homeWindow`}>
             <Info />
             <CarouselWin />
         </section>

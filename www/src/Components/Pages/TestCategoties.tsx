@@ -28,7 +28,7 @@ const TestCategories: React.FC = () => {
 
 
     return (
-        <section className={style.window}>
+        <section className={`${style.window} testCategoryWindow`}>
             <div className={style.tests}>
                 <h1>Тесты</h1>
                 {categories.map(category => {

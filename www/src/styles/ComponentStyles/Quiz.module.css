@@ -6,7 +6,6 @@
     justify-content: center;
     align-items: center;
     z-index: 2;
-    background: linear-gradient(180deg, #000 0%, #000 93.17%, #1B0631 100%);
 }
 .quiz {
     width: 40%;

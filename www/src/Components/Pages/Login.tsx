@@ -70,7 +70,7 @@ const Login: React.FC = () => {
                 <div className={style.logDiv}>
                     <label htmlFor="password">Пароль</label>
                     <input onChange={e => passworHandler(e)} onBlur={e => blurHandler(e)} type={`${eye ? "password" : "text"}`} name="password" placeholder="Ваш пароль..."/>
-                    <div onClick={() => {setEye(!eye)}} className={style.eye}>{eye ? <VisibilityOutlinedIcon color='secondary'/> : <VisibilityOffOutlinedIcon color='secondary'/>}</div>
+                    <div onClick={() => {setEye(!eye)}} className={style.eyeLog}>{eye ? <VisibilityOutlinedIcon color='secondary'/> : <VisibilityOffOutlinedIcon color='secondary'/>}</div>
                     {(passwordDirty && passwordError) && <section className={style.error}>{passwordError}</section>}
                 </div>
                 <button type='submit' className={style.regBtn} disabled={!formValid}>Войти</button>
