@@ -139,3 +139,6 @@ html[data-theme = 'dark'] {
 .quizWindow {
     background: var(--main-backColor);
 }
+.regWin {
+    color: var(--textColor);
+}

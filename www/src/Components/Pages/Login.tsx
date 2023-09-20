@@ -6,29 +6,26 @@ import { Link } from 'react-router-dom';
 
 const Login: React.FC = () => {
 
-    const [email, setEmail] = useState('');
+    const [usernameDirty, setUsernameDirty] = useState<boolean>(false);
+    const [username, setUsername] = useState<string>('');
+    const [usernameError, setUsernameError] = useState<string>('Username не может быть пустым!');
     const [password, setPassword] = useState('');
-    const [emailDirty, setEmailDirty] = useState<boolean>(false);
     const [passwordDirty, setPasswordDirty] = useState<boolean>(false);
-    const [emailError, setEmailError] = useState<string>('email не может быть пустым!');
     const [passwordError, setPasswordError] = useState<string>('Пароль не может быть пустым!');
     const [formValid, setFormValid] = useState<boolean>(false);
 
     const [eye, setEye] = useState(true);
 
+    const usernameHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setUsername(e.target.value);
 
-    const emailHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setEmail(e.target.name);
-        const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-        if (!re.test(String(e.target.value).toLowerCase())) {
-            setEmailError('Некорректный email!');
+        if (!e.target.value) {
+            setUsernameError('Username не может быть пустым!');
         }
         else {
-            setEmailError('');
-            setFormValid(true);
+            setUsernameError('');
         }
     }
-
 
     
     const passworHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -51,21 +48,20 @@ const Login: React.FC = () => {
             // @ts-ignore
             case 'password': 
                 setPasswordDirty(true);
-            case 'email':
-                setEmailDirty(true);
-                break;
+            case 'username':
+                setUsernameDirty(true);
         }
     }
 
     return (
         <section className={style.aura}>
-            <section className={style.regWin}>
+            <section className={`${style.regWin} regWin`}>
             <form>
                 <h1>Войти</h1>
                 <div className={style.logDiv}>
-                    <label htmlFor="email">Email</label>
-                    <input onChange={e => emailHandler(e)} onBlur={e => blurHandler(e)} type="email" name="email" placeholder="Ваша почта..."/>
-                    {(emailDirty && emailError) && <section className={style.error}>{emailError}</section>}
+                    <label htmlFor="username">Username</label>
+                    <input type="text" name='username' placeholder='Username...' onChange={e => {usernameHandler(e)}}/>
+                    {(usernameDirty && usernameError) && <section className={style.error}>{usernameError}</section>}
                 </div>
                 <div className={style.logDiv}>
                     <label htmlFor="password">Пароль</label>

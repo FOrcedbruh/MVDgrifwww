@@ -12,6 +12,9 @@ const TopButton: React.FC = () => {
         if (scroll > 1000) {
             setActive(true);
         }
+        else if (scroll === 0) {
+            setActive(false);
+        }
     }
 
     const topHandler: any = () => {
