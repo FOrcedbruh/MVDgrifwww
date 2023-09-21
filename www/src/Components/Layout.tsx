@@ -3,8 +3,13 @@ import { NavLink, Link } from 'react-router-dom'
 import gerb from './../images/logo-gerb.svg';
 import grif from './../images/logo-grif.svg';
 import line from './../images/logo-line.svg';
-import { useState, MouseEvent } from 'react';
+import React, { useState, MouseEvent } from 'react';
 import ThemeThumb from './ThemeThumb';
+import { useMediaQuery } from 'react-responsive';
+import { LayoutType } from '../types/layoutType';
+import MenuIcon from '@mui/icons-material/Menu';
+
+
 
 
 const Home: React.FC = () => {
@@ -39,9 +44,7 @@ const Materials: React.FC = () => {
 }
 
 
-
-
-const Layout: React.FC = () => {
+const LayoutDesktop: React.FC<LayoutType> = ({gap}) => {
 
     const [home, setHome] = useState<boolean>(false);
     const [materials, setMaterials] = useState<boolean>(false);
@@ -59,38 +62,132 @@ const Layout: React.FC = () => {
         setMaterials(false);
     }
 
+    return (
+        <>
+            <header className={`${style.window} header`}>
+                <div className={style.logo}>
+                    <img src={gerb}/>
+                    <img src={line}/>
+                    <img src={grif}/>
+                </div>
+                <nav>
+                    <ul className={style.main} style={{'gap': gap}}>
+                        <li onMouseOver={homeHandler} onMouseOut={homeOutHandler}>
+                            <NavLink to='/' >Главная</NavLink>
+                        {home  && <Home/>}
+                        </li>
+                        <li onMouseOver={matHandler} onMouseOut={matOutHandler}>
+                            <NavLink to='/материалы'>Материалы</NavLink>
+                            {materials && <Materials />}
+                        </li>
+                        <li>
+                            <NavLink to='/олимпиада'>Олимпиада</NavLink>
+                        </li>
+                        <li>
+                            <NavLink to='/поддержка'>Поддержка</NavLink>
+                        </li>
+                    </ul>
+                </nav>
+                <ThemeThumb />
+                <div className={style.profile}>
+                    <Link to='войти'>Войти</Link>
+                    <Link to='регистрация'><span>Регистрация</span></Link>
+                </div>
+            </header>
+        </>
+    )
+}
+
+
+const LayoutMobile: React.FC = () => {
+
+    const [home, setHome] = useState<boolean>(false);
+    const [materials, setMaterials] = useState<boolean>(false);
+
+    const [nav, setNav] = useState<boolean>(false);
+
+    const homeHandler = (e: MouseEvent<HTMLLIElement>) => {
+        setHome(true);
+    }
+    const homeOutHandler = (e: MouseEvent<HTMLLIElement>) => {
+        setHome(false);
+    }
+    const matHandler = (e: MouseEvent<HTMLLIElement>) => {
+        setMaterials(true);
+    }
+    const matOutHandler = (e: MouseEvent<HTMLLIElement>) => {
+        setMaterials(false);
+    }
+
+    const menuHandler = () => {
+        setNav(!nav);
+    }
+
+    return (
+        <>
+            <header className={`${style.window} header`}>
+                <div className={style.menu} onClick={menuHandler}><MenuIcon color='secondary'/></div>
+                {nav && <nav className={style.mobileNav}>
+                    <ul className={style.main} style={{'flexDirection': 'column'}}>
+                        <li onMouseOver={homeHandler} onMouseOut={homeOutHandler}>
+                            <NavLink to='/' >Главная</NavLink>
+                        {home  && <Home/>}
+                        </li>
+                        <li onMouseOver={matHandler} onMouseOut={matOutHandler}>
+                            <NavLink to='/материалы'>Материалы</NavLink>
+                            {materials && <Materials />}
+                        </li>
+                        <li>
+                            <NavLink to='/олимпиада'>Олимпиада</NavLink>
+                        </li>
+                        <li>
+                            <NavLink to='/поддержка'>Поддержка</NavLink>
+                        </li>
+                    </ul>
+                </nav>}
+                <div className={style.logo}>
+                    <img src={gerb}/>
+                    <img src={line}/>
+                    <img src={grif}/>
+                </div>
+                <ThemeThumb />
+                <div className={style.profile}>
+                    <Link to='войти'>Войти</Link>
+                    <Link to='регистрация'><span>Регистрация</span></Link>
+                </div>
+            </header>
+        </>
+    )
+}
+
+
+const Layout: React.FC = () => {
+
+
+    const isDesktop = useMediaQuery({
+        query: "(min-width: 1224px)"
+      });
+     
+      const isTablet = useMediaQuery({
+        query: "(max-width: 1224px) and (min-width: 787px)"
+      });
+     
+      const isMobile = useMediaQuery({
+        query: "(max-width: 786px)"
+      });
+
+    
+
+    
+
     
     return (
-        <header className={`${style.window} header`}>
-            <div className={style.logo}>
-                <img src={gerb}/>
-                <img src={line}/>
-                <img src={grif}/>
-            </div>
-            <nav>
-                <ul className={style.main}>
-                    <li onMouseOver={homeHandler} onMouseOut={homeOutHandler}>
-                        <NavLink to='/' >Главная</NavLink>
-                       {home  && <Home/>}
-                    </li>
-                    <li onMouseOver={matHandler} onMouseOut={matOutHandler}>
-                        <NavLink to='/материалы'>Материалы</NavLink>
-                        {materials && <Materials />}
-                    </li>
-                    <li>
-                        <NavLink to='/олимпиада'>Олимпиада</NavLink>
-                    </li>
-                    <li>
-                        <NavLink to='/поддержка'>Поддержка</NavLink>
-                    </li>
-                </ul>
-            </nav>
-            <ThemeThumb />
-            <div className={style.profile}>
-                <Link to='войти'>Войти</Link>
-                <Link to='регистрация'><span>Регистрация</span></Link>
-            </div>
-        </header>
+        <>
+            {isDesktop && <LayoutDesktop gap={60}/>}
+            {isTablet && <LayoutDesktop gap={25}/>}
+            {isMobile && <LayoutMobile />}
+        </>
+        
     )
 }
 

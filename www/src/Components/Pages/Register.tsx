@@ -7,6 +7,8 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import { instance } from '../AuthorizationData';
 import axios from 'axios';
+import axiosDebugLog from 'axios-debug-log';
+
 
 
 
@@ -51,7 +53,7 @@ const Register: React.FC = () => {
 
 
     const emailHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setEmail(e.target.name);
+        setEmail(e.target.value);
         const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
         if (!re.test(String(e.target.value).toLowerCase())) {
             setEmailError('Некорректный email!');
@@ -143,49 +145,24 @@ const Register: React.FC = () => {
         setGender(e.target.value as string);
     }
 
-
     const authAPI = {
-        // регистрация
-        async create(
-          username: string,
-          first_name: string,
-          last_name: string,
-          email: string,
-          region: string,
-          city: string,
-          password: string
-        ) {
-          try {
-            console.log('Отправка POST-запроса...');
-            const response = await instance.post('user/register/', {
-              username,
-              first_name,
-              last_name,
-              email,
-              region,
-              city,
-              password
-            });
-      
-            console.log(response.data);
-            return response.data;
-          } catch (error: any) {
-            console.error('Ошибка при отправке POST-запроса:', error);
-            throw error;
-          }
+        create(username: string, first_name: string, last_name: string, email: string, region: string, city: string, password: string) {
+            return instance.post(`user/register/`, {username, first_name, last_name, email, region, city, password})
+                .then(response => {
+                    return response.data
+                })
         }
-      };
+    }
 
       const handleRegister = () => {
-        authAPI.create(username, email, region, city, password, last_name, first_name).then(data => {console.log(data)});
+        authAPI.create(username, first_name, last_name, email, region, city, password).then(data => {console.log(data)});
       }
-      
 
 
     return (
         <section className={style.aura}>
             <section className={`${style.regWin} regWin`}>
-            <form method='post'>
+            <form name='register'>
             <h1>Регистрация</h1>
             <section className={style.inputWindows}>
                     <section className={style.inputs}>
@@ -259,7 +236,7 @@ const Register: React.FC = () => {
                         </div>
                     </section>
             </section>
-                <button type='submit' className={style.regBtn} disabled={!formValid} onClick={handleRegister}>Зарегистрироваться</button>
+                <button form='register' type='submit' className={style.regBtn} disabled={!formValid} onClick={handleRegister}>Зарегистрироваться</button>
             </form>
             <p>У вас уже есть аккаунт?<Link to='/войти'>Войти</Link></p>
         </section>

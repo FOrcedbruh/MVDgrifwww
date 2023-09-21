@@ -4,6 +4,21 @@
     margin: 0;
     padding: 0;
 }
+@media  only screen and (max-width: 800px) {
+    html {
+        min-width: 800px;
+        
+    }
+    .homeWindow {
+        min-width: 800px;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .welcome p{
+       font-size: 30px;
+    }
+}
 
 :root {
     --background-size: 100vh;
@@ -13,13 +28,12 @@
     --welcomeGrif: rgb(110, 56, 141);
     --LayoutColor: linear-gradient(180deg, #51238C 0%, rgba(0, 0, 0, 0.00) 100.1%);
 }
-
 body {
     margin: 0;
     padding: 0;
     font-family: 'Montserrat', sans-serif;
+    margin: 0 auto;
 }
-
 #root {
     display: flex;
     flex-direction: column;
@@ -28,9 +42,11 @@ body {
     min-height: var(--background-size);
     width: 100%;
     background-color: var(--Color);
+    margin: 0 auto;
 }
 
 .wrapper {
+    margin: 0 auto;
     width: 100%;
     height: var(--background-size);
     display: flex;

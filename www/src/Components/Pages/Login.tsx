@@ -3,6 +3,7 @@ import { useState } from 'react';
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
 import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined';
 import { Link } from 'react-router-dom';
+import { instance } from '../AuthorizationData';
 
 const Login: React.FC = () => {
 
@@ -53,10 +54,25 @@ const Login: React.FC = () => {
         }
     }
 
+
+    const authAPI = {
+        login(username: string, password: string) {
+            return instance.post('user/login/', { username, password })
+                .then(response => {
+                    return response.data
+                });
+        }
+    }
+
+    const loginHandler = () => {
+        authAPI.login(username, password).then(data => {console.log(data)});
+    }
+
+
     return (
         <section className={style.aura}>
             <section className={`${style.regWin} regWin`}>
-            <form>
+            <form method='post'>
                 <h1>Войти</h1>
                 <div className={style.logDiv}>
                     <label htmlFor="username">Username</label>
@@ -69,7 +85,7 @@ const Login: React.FC = () => {
                     <div onClick={() => {setEye(!eye)}} className={style.eyeLog}>{eye ? <VisibilityOutlinedIcon color='secondary'/> : <VisibilityOffOutlinedIcon color='secondary'/>}</div>
                     {(passwordDirty && passwordError) && <section className={style.error}>{passwordError}</section>}
                 </div>
-                <button type='submit' className={style.regBtn} disabled={!formValid}>Войти</button>
+                <button type='submit' className={style.regBtn} disabled={!formValid} onClick={loginHandler}>Войти</button>
             </form>
             <p>
             У вас еще нет аккаунта?
