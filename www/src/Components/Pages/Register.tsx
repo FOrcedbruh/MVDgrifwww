@@ -194,6 +194,9 @@ const Register: React.FC = () => {
                             <label htmlFor="city">Ваш Город</label>
                             <input type="text" name='city' value={city} placeholder='Ваш Город...' onChange={e => {cityHandler(e)}}/>
                         </div>
+                        
+                    </section>
+                    <section className={style.inputs}>
                         <div className={style.regDiv}>
                             <label htmlFor="gender">Ваш пол</label>
                             <Select label="Ваш пол" color='secondary' value={gender} onChange={handleGender} style={{width: 100}} labelId="demo-simple-select-standard-label" id="demo-simple-select-standard">
@@ -201,8 +204,6 @@ const Register: React.FC = () => {
                                 <MenuItem value={"Женский"}>Женский</MenuItem>
                             </Select>
                         </div>
-                    </section>
-                    <section className={style.inputs}>
                         <div className={style.regDiv}>
                             <label htmlFor="class">Ваш класс</label>
                             <Select label="Ваш класс" color='secondary' value={clas} onChange={handleClass} style={{width: 100}} labelId="demo-simple-select-standard-label" id="demo-simple-select-standard">

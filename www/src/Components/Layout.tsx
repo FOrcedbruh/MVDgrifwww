@@ -8,7 +8,7 @@ import ThemeThumb from './ThemeThumb';
 import { useMediaQuery } from 'react-responsive';
 import { LayoutType } from '../types/layoutType';
 import MenuIcon from '@mui/icons-material/Menu';
-
+import CloseIcon from '@mui/icons-material/Close';
 
 
 
@@ -19,7 +19,10 @@ const Home: React.FC = () => {
             <li><Link to='/'>Документы</Link></li>
             <li><Link to='/'>График</Link></li>
             <li><Link to='/'>Галерея</Link></li>
+            <li><Link to='/профиль'>Профиль</Link></li>
             <li><Link to='/'>Контакты</Link></li>
+            
+
         </ul>
     )
 }
@@ -106,6 +109,8 @@ const LayoutMobile: React.FC = () => {
 
     const [nav, setNav] = useState<boolean>(false);
 
+    const [menuCross, setMenuCross] = useState<boolean>(false);
+
     const homeHandler = (e: MouseEvent<HTMLLIElement>) => {
         setHome(true);
     }
@@ -121,30 +126,13 @@ const LayoutMobile: React.FC = () => {
 
     const menuHandler = () => {
         setNav(!nav);
+        setMenuCross(!menuCross);
     }
 
     return (
         <>
             <header className={`${style.window} header`}>
-                <div className={style.menu} onClick={menuHandler}><MenuIcon color='secondary'/></div>
-                {nav && <nav className={style.mobileNav}>
-                    <ul className={style.main} style={{'flexDirection': 'column'}}>
-                        <li onMouseOver={homeHandler} onMouseOut={homeOutHandler}>
-                            <NavLink to='/' >Главная</NavLink>
-                        {home  && <Home/>}
-                        </li>
-                        <li onMouseOver={matHandler} onMouseOut={matOutHandler}>
-                            <NavLink to='/материалы'>Материалы</NavLink>
-                            {materials && <Materials />}
-                        </li>
-                        <li>
-                            <NavLink to='/олимпиада'>Олимпиада</NavLink>
-                        </li>
-                        <li>
-                            <NavLink to='/поддержка'>Поддержка</NavLink>
-                        </li>
-                    </ul>
-                </nav>}
+                <div className={style.menu} onClick={menuHandler}>{menuCross ? <CloseIcon color='secondary'/> : <MenuIcon color='secondary'/>}</div>
                 <div className={style.logo}>
                     <img src={gerb}/>
                     <img src={line}/>
@@ -156,6 +144,24 @@ const LayoutMobile: React.FC = () => {
                     <Link to='регистрация'><span>Регистрация</span></Link>
                 </div>
             </header>
+            {nav && <nav className={style.mobileNav}>
+                        <ul className={style.main} style={{'flexDirection': 'column'}}>
+                            <li onMouseOver={homeHandler} onMouseOut={homeOutHandler}>
+                                <NavLink to='/' >Главная</NavLink>
+                            {home  && <Home/>}
+                            </li>
+                            <li onMouseOver={matHandler} onMouseOut={matOutHandler}>
+                                <NavLink to='/материалы'>Материалы</NavLink>
+                                {materials && <Materials />}
+                            </li>
+                            <li>
+                                <NavLink to='/олимпиада'>Олимпиада</NavLink>
+                            </li>
+                            <li>
+                                <NavLink to='/поддержка'>Поддержка</NavLink>
+                            </li>
+                        </ul>
+                    </nav>}
         </>
     )
 }

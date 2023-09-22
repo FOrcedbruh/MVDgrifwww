@@ -9,7 +9,7 @@ import Home from "./Pages/Home";
 import { useState, useEffect } from "react";
 import TopButton from "./TopButton";
 import { useInView }from 'react-intersection-observer'
-
+import Profile from "./Pages/Profile";
 
 
 const Main: React.FC = () => {
@@ -64,9 +64,10 @@ const App: React.FC = () => {
                         <Route path="Тесты/:title" element={<Quiz />}/>
                         <Route path='/Регистрация' element={<Register />}/>
                         <Route path='/Войти' element={<Login />}/>
+                        <Route path="/Профиль" element={<Profile />}/>
                     </Routes>
-                    <TopButton />
                 </main>
+                <TopButton />
             </section>
         </>
         
