@@ -34,7 +34,23 @@ const Main: React.FC = () => {
 
 const App: React.FC = () => {
 
-    
+    const [activeGrif, setActiveGrif] = useState<boolean>(false);
+
+    const scrollHandler: any = () => {
+        if(window.scrollY > 50) {
+            setActiveGrif(true);
+        }
+        else if (window.scrollY < 300) {
+            setActiveGrif(false);
+        }
+    }
+
+    useEffect(() => {
+        window.addEventListener('scroll', scrollHandler);
+
+
+        return () => {window.removeEventListener('scroll', scrollHandler)}
+    }, [])
 
     const [percent, setPercent] = useState<number>(0);
 
@@ -47,8 +63,12 @@ const App: React.FC = () => {
     useEffect(() => {
         window.addEventListener('scroll', progress);
 
+
         return () => {window.removeEventListener('scroll', progress)};
     }, []);
+
+
+    
 
     return (
         <>
@@ -57,7 +77,7 @@ const App: React.FC = () => {
                 <Layout />
                 <main className="container">
                     <Main />
-                    <img src={mainGrif} className="mainGrif"/>
+                    <img src={mainGrif} className={`mainGrif ${activeGrif ? 'activeMainGrif' : ''}`}/>
                     <Routes>
                         <Route path="/" element={<Home />}/>
                         <Route path="/Профиль" element={<Profile />}/>
@@ -70,7 +90,6 @@ const App: React.FC = () => {
                 <TopButton />
             </section>
         </>
-        
     )
 }
 

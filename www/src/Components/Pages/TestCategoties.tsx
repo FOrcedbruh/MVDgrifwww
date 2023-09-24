@@ -7,6 +7,7 @@ interface Category {
     category: string;
 }
 
+
 const TestItem: React.FC<Category> = ({category}) => {
     return (
         <section className={style.categories}>
@@ -34,7 +35,6 @@ const TestCategories: React.FC = () => {
                 {categories.map(category => {
                     return (<TestItem category={category}/>)
                 })}
-                
             </div>
             <div className={style.grif}>
                 <img src={grif}/>

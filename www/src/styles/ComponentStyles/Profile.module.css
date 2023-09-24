@@ -8,9 +8,12 @@
     backdrop-filter: blur(21px);
     z-index: 2;
 }
+h2 {
+    padding-top: 40%;
+}
 .topSector {
     width: 100%;
-    height: 50%;
+    height: 80%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -69,4 +72,25 @@
     align-items: center;
     height: 100%;
     width: 50%;
+}
+.userData ul li {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.userData ul li input {
+    border: 1px solid #fff;
+    outline: none;
+    background-color: transparent;
+    color: blueviolet;
+    border-radius: 20px;
+    height: 30px;
+    padding: 4px 10px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    transition: all .3s ease;
+}
+.userData ul li input:focus {
+    border: 2px solid blueviolet;
+    transform: translateX(10px);
 }
