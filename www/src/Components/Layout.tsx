@@ -73,7 +73,7 @@ const LayoutDesktop: React.FC<LayoutType> = ({gap}) => {
                     <img src={line}/>
                     <img src={grif}/>
                 </div>
-                <nav>
+                <nav className='nav'>
                     <ul className={style.main} style={{'gap': gap}}>
                         <li onMouseOver={homeHandler} onMouseOut={homeOutHandler}>
                             <NavLink to='/' >Главная</NavLink>

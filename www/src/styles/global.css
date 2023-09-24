@@ -4,15 +4,7 @@
     margin: 0;
     padding: 0;
 }
-@media  only screen and (max-width: 800px) {
-    html {
-        min-width: 800px;
-        
-    }
-    .homeWindow {
-        min-width: 800px;
-    }
-}
+
 
 
 
@@ -23,6 +15,9 @@
     --Color: #fff;
     --welcomeGrif: rgb(110, 56, 141);
     --LayoutColor: linear-gradient(180deg, #51238C 0%, rgba(0, 0, 0, 0.00) 100.1%);
+    --HeaderTextColor: #8437c2;
+    --borderBottom: #fff;
+    --WelcomeShadow: 5px 5px 20px #857694;
 }
 body {
     margin: 0;
@@ -65,12 +60,18 @@ html[data-theme = 'light'] {
     --Color: #fff;
     --welcomeGrif: rgb(110, 56, 141);
     --LayoutColor: linear-gradient(180deg, #51238C 0%, rgba(0, 0, 0, 0.00) 100.1%);
+    --HeaderTextColor: #8437c2;
+    --borderBottom: #fff;
+    --WelcomeShadow: 5px 5px 20px #857694;
 }
 html[data-theme = 'dark'] {
     --textColor: #fff;
     --main-backColor: linear-gradient(180deg, #000 0%, #000 93.17%, #1B0631 100%);
     --Color: #000;
     --welcomeGrif: #fff;
+    --HeaderTextColor: #fff;
+    --borderBottom: #8437c2;
+    --WelcomeShadow: 5px 5px 20px #331c4b;
 }
 .mainGrif {
     position: absolute;
@@ -99,6 +100,7 @@ html[data-theme = 'dark'] {
     font-style: normal;
     font-weight: 600;
     line-height: normal;
+    text-shadow: var(--WelcomeShadow);
 }
 .welcome p span {
     color: var(--welcomeGrif);
@@ -166,4 +168,20 @@ html[data-theme = 'dark'] {
     .welcome p span {
         font-size: 60px;
      }
+}
+@media  only screen and (max-width: 800px) {
+    html {
+        min-width: 800px;
+        
+    }
+    .homeWindow {
+        min-width: 800px;
+    }
+}
+.nav a {
+    color: var(--HeaderTextColor);
+}
+.active {
+    border-bottom: 2px solid var(--borderBottom);
+    color: var(--HeaderTextColor);
 }

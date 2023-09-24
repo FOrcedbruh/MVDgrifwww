@@ -2,6 +2,7 @@ import style from './../../styles/ComponentStyles/Home.module.css';
 import gerb from './../../images/gerb.svg';
 import line from './../../images/line.svg';
 import CarouselWin from '../Carousel';
+import { Outlet } from 'react-router-dom';
 
 const Info: React.FC = () => {
     return (
@@ -28,7 +29,6 @@ const Info: React.FC = () => {
                     <li>Программы бакалавриата, программы специалитета, программы магистратуры на 2024 год</li>
                 </ul>
             </div>
-            
         </section>
     )
 }

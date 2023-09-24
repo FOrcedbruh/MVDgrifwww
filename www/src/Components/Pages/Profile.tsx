@@ -27,7 +27,7 @@ const Profile: React.FC = () => {
         authAPI.me(token).then(res => res.data);
     })
     
-
+    const privateInfo: Array<string> = ['Имя:', 'Пользователь:', 'Почта:', 'Регион:', 'Город:', 'Школа:', 'Дата рождения:'];
 
     const news: Array<string> = [
         'Придумали, как сделать лампы накаливания более энергоэффективными и долговечными', 'В России разработали систему для настройки оптимальной работы головного мозга', 'Проблема процессоров Intel'
@@ -38,8 +38,10 @@ const Profile: React.FC = () => {
             <section className={`${style.window} profile`}>
                 <div className={style.topSector}>
                     <div className={style.userData}>
-                        <h3>Райан Гослинг</h3>
-                        <p>nickname</p>
+                        <h2> <span>Личные</span> данные</h2>
+                        <ul>
+                            {privateInfo.map(item => {return <li>{item}</li>})}
+                        </ul>
                     </div>
                     <div className={style.newsWin}>
                         <article>

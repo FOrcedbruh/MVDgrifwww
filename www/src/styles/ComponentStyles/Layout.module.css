@@ -4,6 +4,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    text-decoration: none;
 }
 .window nav {
     display: flex;
@@ -18,10 +19,6 @@
     justify-content: center;
     align-items: center;
     list-style: none;
-}
-.window nav ul li a {
-    color: #8437c2;
-    text-decoration: none;
 }
 .profile {
     display: flex;

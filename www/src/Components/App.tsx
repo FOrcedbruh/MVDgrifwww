@@ -60,11 +60,11 @@ const App: React.FC = () => {
                     <img src={mainGrif} className="mainGrif"/>
                     <Routes>
                         <Route path="/" element={<Home />}/>
+                        <Route path="/Профиль" element={<Profile />}/>
                         <Route path='/Тесты' element={<TestCategories />}/>
                         <Route path="Тесты/:title" element={<Quiz />}/>
                         <Route path='/Регистрация' element={<Register />}/>
                         <Route path='/Войти' element={<Login />}/>
-                        <Route path="/Профиль" element={<Profile />}/>
                     </Routes>
                 </main>
                 <TopButton />
